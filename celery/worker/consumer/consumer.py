@@ -570,6 +570,7 @@ class Consumer(object):
                 except InvalidTaskError as exc:
                     return on_invalid_task(payload, message, exc)
                 except DecodeError as exc:
+                    print('DEBUG-CAUGHT-DECODEERROR. task: ' + str(message.headers['task']))
                     return self.on_decode_error(message, exc)
 
         return on_task_received
